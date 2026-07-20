@@ -115,6 +115,9 @@ Finished
 
 Al ingresar a la dirección localizada (http://172.17.0.2/secret.php) desde el navegador, la interfaz web expuso el siguiente mensaje:
 
+
+<img src="" alt=""/>
+
 ```
 "Hola Mario, Esta web no se puede hackear."
 ```
