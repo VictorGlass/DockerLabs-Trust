@@ -8,6 +8,29 @@
 * **Objetivo:** Identificar servicios vulnerables, obtener acceso inicial y escalar privilegios al usuario administrador (`root`).
 * **Vectores Clave:** Enumeración de directorios web, fuga de información de usuarios, fuerza bruta SSH y abuso de privilegios Sudo (GTFOBins).
 
+<br></br>
+## ⚠️ Paso 00: Comenzando
+
+- Descargar la VM de DockerLabs - Trust
+- Descomprimir la VM desde la terminal de Kali
+```
+unzip trust.zip
+```
+
+- Archivo descomprimido
+```
+auto_deploy.sh
+```
+
+- Pasar a Super_Usuario
+```
+sudo su
+```
+
+- Correr la VM
+```
+sudo -/auto_deploy.sh trust.tar
+```
 
 <br></br>
 ## 🔍 Paso 01: Reconocimiento y Enumeración
